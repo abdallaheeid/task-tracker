@@ -1,7 +1,9 @@
 package org.abdallah.tasktracker.cli;
 
+import org.abdallah.tasktracker.model.Task;
 import org.abdallah.tasktracker.service.TaskService;
 import org.springframework.stereotype.Component;
+import java.util.List;
 
 @Component
 public class CommandProcessor {
@@ -24,6 +26,9 @@ public class CommandProcessor {
             case "add" -> handleAdd(args);
             case "update"  -> handleUpdate(args);
             case "delete" -> handleDelete(args);
+            case "mark-in-progress" -> handleMarkInProgress(args);
+            case "mark-done" -> handleMarkDone(args);
+            case "list" -> handleList(args);
             default -> System.out.println("Unknown command." + command);
         }
     }
@@ -59,8 +64,55 @@ public class CommandProcessor {
         }
 
         int id = Integer.parseInt(args[1]);
-        var task = taskService.deleteTask(id);
+        taskService.deleteTask(id);
         System.out.println("Task deleted successfully (ID: " + id + ")");
+    }
+
+    private void handleList(String[] args) {
+        if (args.length == 1) {
+            List<Task> tasks = taskService.listAllTasks();
+            System.out.println(tasks);
+            return;
+        }
+
+        // Check second argument
+        String filter = args[1];
+
+        switch (filter) {
+            case "done" -> {
+                List<Task> tasks = taskService.listDoneTasks();
+                System.out.println(tasks);
+            }
+            case "todo" -> {
+                List<Task> tasks = taskService.listTodoTasks();
+                System.out.println(tasks);
+            }
+            case "in-progress" -> {
+                List<Task> tasks = taskService.listInProgressTasks();
+                System.out.println(tasks);
+            }
+            default -> System.out.println("Unknown list filter: " + filter);
+        }
+    }
+
+    private void handleMarkDone(String[] args) {
+        if(args.length < 2){
+            System.out.println("Usage: task-cli mark-done <id>");
+        }
+
+        int id = Integer.parseInt(args[1]);
+        taskService.markDone(id);
+        System.out.println("Task Marked Done successfully (ID: " + id + ")");
+    }
+
+    private void handleMarkInProgress(String[] args) {
+        if(args.length < 2){
+            System.out.println("Usage: task-cli mark-in-progress <id>");
+        }
+
+        int id = Integer.parseInt(args[1]);
+        taskService.markInProgress(id);
+        System.out.println("Task Marked inProgress successfully (ID: " + id + ")");
     }
 
 
