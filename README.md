@@ -7,8 +7,8 @@ This CLI allows you to add, update, delete, and list tasks directly from the ter
 
 ## 🔗 Project URL (required for submission)
 
-**GitHub Repository:**  
-👉 https://github.com/abdallaheeid/task-tracker
+**GitHub Repository:**
+https://github.com/abdallaheeid/task-tracker
 
 ---
 
