@@ -13,11 +13,16 @@ import java.util.List;
 @Repository
 public class TaskRepository {
 
-    private final Path filePath =  Paths.get("tasks.json");
+    private final Path filePath;
     private final ObjectMapper mapper = new ObjectMapper();
 
     public TaskRepository() {
+        this.filePath = Paths.get("tasks.json");
         initStorage();
+    }
+
+    public TaskRepository(String path) {
+        this.filePath = Paths.get(path);
     }
 
     public List<Task> loadAll(){

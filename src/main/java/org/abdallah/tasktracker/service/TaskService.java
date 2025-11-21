@@ -28,8 +28,8 @@ public class TaskService {
         task.setId(indexId);
         task.setDescription(description);
         task.setStatus(Status.todo);
-        task.setCreatedAt(LocalDateTime.parse(LocalDateTime.now().toString()));
-        task.setUpdatedAt(LocalDateTime.parse(LocalDateTime.now().toString()));
+        task.setCreatedAt(LocalDateTime.now());
+        task.setUpdatedAt(LocalDateTime.now());
 
         tasks.add(task);
         taskRepository.saveAll(tasks);
@@ -40,7 +40,7 @@ public class TaskService {
         List<Task> tasks = taskRepository.loadAll();
         Task task = this.findTaskById(tasks, id);
         if (task == null) {
-            return null;
+            throw  new Error("Task with id " + id + " does not exist");
         }
         task.setDescription(newDescription);
         task.setUpdatedAt(LocalDateTime.parse(LocalDateTime.now().toString()));
