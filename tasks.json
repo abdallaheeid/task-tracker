@@ -1,7 +1,13 @@
 [ {
-  "createdAt" : "2025-11-21T18:29:51.059903",
-  "description" : "Test",
+  "createdAt" : "2025-11-21T19:52:00.640168",
+  "description" : "Buy car",
   "id" : 1,
+  "status" : "done",
+  "updatedAt" : "2025-11-21T19:52:00.64113"
+}, {
+  "createdAt" : "2025-11-21T19:56:20.769003",
+  "description" : "Apply for phd",
+  "id" : 2,
   "status" : "todo",
-  "updatedAt" : "2025-11-21T18:52:47.821327"
+  "updatedAt" : "2025-11-21T19:56:20.769058"
 } ]
