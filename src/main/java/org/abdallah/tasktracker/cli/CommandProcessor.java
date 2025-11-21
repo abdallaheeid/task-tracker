@@ -22,6 +22,7 @@ public class CommandProcessor {
 
         switch (command) {
             case "add" -> handleAdd(args);
+            case "update"  -> handleUpdate(args);
             default -> System.out.println("Unknown command." + command);
         }
     }
@@ -37,6 +38,18 @@ public class CommandProcessor {
 
         System.out.println("Task added successfully (ID: " + task.getId() + ")");
 
+    }
+
+    private void handleUpdate(String[] args){
+        if(args.length < 2){
+            System.out.println("Usage: task-cli update <id> <description>");
+        }
+
+        int id = Integer.parseInt(args[1]);
+        String description = String.join(" ", java.util.Arrays.copyOfRange(args, 2, args.length));
+
+        var task = taskService.updateTask(id, description);
+        System.out.println("Task updated successfully (ID: " + task.getId() + ")");
     }
 
 

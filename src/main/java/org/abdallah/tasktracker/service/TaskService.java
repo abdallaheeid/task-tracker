@@ -34,15 +34,35 @@ public class TaskService {
         taskRepository.saveAll(tasks);
         return task;
     }
+
     public Task updateTask(int id, String newDescription) {
-        return null;
+        List<Task> tasks = taskRepository.loadAll();
+        Task task = this.findTaskById(tasks, id);
+        if (task == null) {
+            return null;
+        }
+        task.setDescription(newDescription);
+        task.setUpdatedAt(LocalDateTime.parse(LocalDateTime.now().toString()));
+        taskRepository.saveAll(tasks);
+        return task;
     }
+
     public boolean deleteTask(int id) {
         return false;
     }
-    public Task setStatus(Status status) {
+
+    public Task markInProgress(int id) {
         return null;
     }
+
+    public Task markDone(int id) {
+        return null;
+    }
+
+    public Task markTodo(int id) {
+        return null;
+    }
+
     public List<Task> listAllTasks() {
         return List.of();
     }
@@ -54,7 +74,12 @@ public class TaskService {
         return null;
     }
 
-    protected Task findTaskById(int id) {
+    protected Task findTaskById(List<Task> tasks, int id) {
+        for (Task task : tasks) {
+            if (task.getId() == id) {
+                return task;
+            }
+        }
         return null;
     }
 
