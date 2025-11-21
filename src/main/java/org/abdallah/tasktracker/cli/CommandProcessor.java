@@ -23,6 +23,7 @@ public class CommandProcessor {
         switch (command) {
             case "add" -> handleAdd(args);
             case "update"  -> handleUpdate(args);
+            case "delete" -> handleDelete(args);
             default -> System.out.println("Unknown command." + command);
         }
     }
@@ -50,6 +51,16 @@ public class CommandProcessor {
 
         var task = taskService.updateTask(id, description);
         System.out.println("Task updated successfully (ID: " + task.getId() + ")");
+    }
+
+    private void handleDelete(String[] args) {
+        if(args.length < 2){
+            System.out.println("Usage: task-cli delete <id>");
+        }
+
+        int id = Integer.parseInt(args[1]);
+        var task = taskService.deleteTask(id);
+        System.out.println("Task deleted successfully (ID: " + id + ")");
     }
 
 

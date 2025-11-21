@@ -49,7 +49,16 @@ public class TaskService {
 
     // TODO
     public boolean deleteTask(int id) {
-        return false;
+        List<Task> tasks = taskRepository.loadAll();
+
+        Task task = findTaskById(tasks, id);
+        if (task == null) {
+            return false;
+        }
+
+        tasks.remove(task);
+        taskRepository.saveAll(tasks);
+        return true;
     }
     // TODO
     public Task markInProgress(int id) {
