@@ -54,14 +54,4 @@ public class TaskRepository {
             throw new RuntimeException(e);
         }
     }
-
-    protected String readFileContent(){
-        return "";
-    };
-
-    protected void writeFileContent(String jsonContent){}
-
-    protected void backupCorruptedFile(){};
-
-
 }

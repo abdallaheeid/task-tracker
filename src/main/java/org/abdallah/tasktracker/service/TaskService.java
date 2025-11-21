@@ -47,25 +47,27 @@ public class TaskService {
         return task;
     }
 
+    // TODO
     public boolean deleteTask(int id) {
         return false;
     }
-
+    // TODO
     public Task markInProgress(int id) {
         return null;
     }
-
+    // TODO
     public Task markDone(int id) {
         return null;
     }
-
+    // TODO
     public Task markTodo(int id) {
         return null;
     }
-
+    // TODO
     public List<Task> listAllTasks() {
         return List.of();
     }
+    // TODO
     public void listDoneTasks() {}
     public void listInProgressTasks() {}
     public void listTodoTasks() {}
