@@ -10,6 +10,8 @@ This CLI allows you to add, update, delete, and list tasks directly from the ter
 **GitHub Repository:**
 https://github.com/abdallaheeid/task-tracker
 
+**Roadmap Project url:**
+https://roadmap.sh/projects/task-tracker
 ---
 
 ## 🚀 Features
